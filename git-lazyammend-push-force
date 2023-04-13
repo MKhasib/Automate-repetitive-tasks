@@ -1,0 +1,6 @@
+#!/bin/sh
+# add latest changes to last commit and force push it
+git add .
+git commit --amend --no-edit
+git push origin HEAD --force
+

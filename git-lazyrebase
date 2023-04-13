@@ -1,0 +1,15 @@
+#!/bin/sh
+# rebase to provided branch
+branch=$1 
+if [ ! -z "$1" ] 
+then 
+ git add .
+ git stash 
+ git checkout $branch  
+ git pull origin HEAD
+ git switch -
+ git rebase $branch
+ git stash pop
+else 
+ echo "Branch name to rebase is not specified" 
+fi

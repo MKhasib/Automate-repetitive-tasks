@@ -1,0 +1,12 @@
+#!/bin/sh
+# save local directory, checks branch and pull changes from remote to local
+branch=$1 
+if [ ! -z "$1" ] 
+then 
+ git add .
+ git stash 
+ git checkout $branch  
+ git pull origin HEAD
+else 
+ echo "Branch name to checkout is not specified" 
+fi
