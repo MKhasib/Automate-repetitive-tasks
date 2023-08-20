@@ -1,15 +1,26 @@
 #!/bin/sh
 # rebase to provided branch
 branch=$1 
-if [ ! -z "$1" ] 
-then 
- git add .
- git stash 
- git checkout $branch  
- git pull origin HEAD
- git switch -
- git rebase $branch
- git stash pop
-else 
- echo "Branch name to rebase is not specified" 
+if [ -z "$branch" ]
+then
+      branch="develop"
 fi
+git add .
+# check if there are any changes in the current branch and save to varaible
+changes=$(git status --porcelain)
+# if there are changes stash them
+if [ -n "$changes" ]
+then
+      git stash
+fi
+git checkout $branch  
+git pull origin HEAD
+git switch -
+git rebase $branch
+# if there were changes pop them
+if [ -n "$changes" ]
+then
+      git stash pop
+fi
+
+

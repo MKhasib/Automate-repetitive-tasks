@@ -1,0 +1,3 @@
+#!/bin/sh
+# stash pop
+git stash pop

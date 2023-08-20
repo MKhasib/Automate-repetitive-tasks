@@ -1,0 +1,3 @@
+#!/bin/sh
+# push force
+git pull origin HEAD

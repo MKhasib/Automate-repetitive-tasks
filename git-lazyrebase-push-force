@@ -1,16 +1,4 @@
 #!/bin/sh
 # rebase to provided branch followed by force push current branch
-branch=$1 
-if [ ! -z "$1" ] 
-then 
- git add .
- git stash 
- git checkout $branch  
- git pull origin HEAD
- git switch -
- git rebase $branch
- git stash pop
- git apf
-else 
- echo "Branch name to rebase is not specified" 
-fi
+git r $1
+git pf
